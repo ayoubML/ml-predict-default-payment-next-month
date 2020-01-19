@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<script >
+	window.onscroll = function() {scrollFunction()};
+
+	function scrollFunction() {
+	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+	    document.getElementById("navbar").style.top = "0";
+	  } else {
+	    document.getElementById("navbar").style.top = "-50px";
+	  }
+	} 
+</script>
+  
+</head>
+
+<body>
+ <div class="login" >
+	<h1>Predict if client is bad</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<div >
+    		<input type="text" name="HomeImp" placeholder="HomeImp" required="required" />
+	    	<input type="text" name="DebtCon" placeholder="DebtCon" required="required" />
+	    	<input type="text" name="Other" placeholder="Other" required="required" />
+	    	<input type="text" name="Office" placeholder="Office" required="required" />
+	    	<input type="text" name="Sales" placeholder="Sales" required="required" />
+	    	<input type="text" name="Mgr" placeholder="Mgr" required="required" />
+	    	<input type="text" name="ProfExe" placeholder="ProfExe" required="required" />
+	        <input type="text" name="Self" placeholder="Self" required="required" />
+	        <input type="text" name="LOAN" placeholder="LOAN" required="required" />
+	        <input type="text" name="MORTDUE" placeholder="MORTDUE" required="required" />
+	        <input type="text" name="VALUE" placeholder="VALUE" required="required" />
+	        <input type="text" name="YOJ" placeholder="YOJ" required="required" />
+	        <input type="text" name="DEROG" placeholder="DEROG" required="required" />
+	        <input type="text" name="DELINQ" placeholder="DELINQ" required="required" />
+	        <input type="text" name="CLAGE" placeholder="CLAGE" required="required" />
+	        <input type="text" name="NINQ" placeholder="NINQ" required="required" />
+	        <input type="text" name="CLNO" placeholder="CLNO" required="required" />
+	        <input type="text" name="DEBTINC" placeholder="DEBTINC" required="required" />
+
+
+    	</div>
+    	
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+
+
+</body>
+</html>
